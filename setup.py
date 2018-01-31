@@ -2,13 +2,14 @@
 # -*- coding: utf-8 -*-
 
 from distutils.core import setup, Extension
-from setuptools import find_packages
 from Cython.Build import cythonize
 
-ext = Extension(name="sparsehash",
-         sources=["sparsehash/dense_hash_map.pyx", "sparsehash/dense_hash_set.pyx"],
-         language='c++',
-         extra_compile_args=['-std=c++14', '-stdlib=libc++'])
+ext = Extension(
+    name="sparsehash.dense_hash_map",
+    sources=["sparsehash/dense_hash_map.pyx"],
+    language='c++',
+    extra_compile_args=['-std=c++14', '-stdlib=libc++'])
+ext_modules = cythonize(ext)
 
 setup(
     name='sparsehash',
@@ -17,6 +18,5 @@ setup(
     author='Binh Vu',
     author_email='binhlvu@gmail.com',
     url='https://github.com/binh-vu/pyutils',
-    ext_modules=cythonize(ext),
-    packages=find_packages(exclude=['tests.*', 'tests'])
-)
+    ext_modules=ext_modules,
+    packages=['sparsehash'])
