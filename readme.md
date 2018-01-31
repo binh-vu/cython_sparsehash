@@ -1,1 +1,1 @@
-# Cython wrapped of google sparsehash library (hashtable)
+# A Cython wrapped of google sparsehash library (hashtable)
